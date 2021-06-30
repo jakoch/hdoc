@@ -29,11 +29,17 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       
-    - name: 🔽 Install Python and Ninja
-      run: sudo apt-get install python3 python3-pip python3-setuptools python3-wheel ninja-build
+    #- name: 🔽 Install Python
+    #  run: sudo apt-get install python3 python3-pip python3-setuptools python3-wheel
+      
+    - name: 🔽 Install Ninja
+      run: sudo apt-get install ninja-build
       
     - name: 🔽 Install Meson
       run: pip3 install meson
+      
+    - name: 🔽 Install 
+      run: sudo apt install clang-11
       
     - name: ✏ Build using meson
       run: meson build 
