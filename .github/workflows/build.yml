@@ -35,11 +35,13 @@ jobs:
            sudo apt-get -y install wget gnupg     
            
     - name: 🔽 Add package source for LLVM 12
-      run: |     
-           wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add - 
-           echo "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-12 main" >> /etc/apt/sources.list.d/llvm.list
-           echo "deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-12 main" >> /etc/apt/sources.list.d/llvm.list
-     
+      run: |    
+        sudo tee /etc/apt/sources.list.d/llvm.list >/dev/null <<EOF
+        deb http://apt.llvm.org/focal/ llvm-toolchain-focal-12 main main
+        deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-12 main main
+        EOF
+        wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add - 
+      
     #- name: 🔽 Install Python
     #  run: sudo apt-get install python3 python3-pip python3-setuptools python3-wheel
        
