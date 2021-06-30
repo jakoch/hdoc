@@ -65,6 +65,11 @@ jobs:
                  zlib1g-dev \
                  libssl-dev \
                  libcurl4-openssl-dev
+                 
+    - name: Update LLVM version 
+      run: | 
+        sudo update-alternatives --install /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-12 12
+        sudo update-alternatives --config llvm-config
       
     - name: ✏ Build using meson
       run: meson build 
