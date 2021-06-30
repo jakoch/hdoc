@@ -7,6 +7,7 @@ clang_modules = [
   'clangToolingCore',
   'clangFrontend',
   'clangAST',
+  'clangASTMatchers',
   'clangIndex',
   'clangBasic',
 ]
