@@ -29,13 +29,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       
-    #- name: 🔽 Install Python
-    #  run: sudo apt-get install python3 python3-pip python3-setuptools python3-wheel
-    
     - name: 🔽 Install wget gnupg
       run: | 
-           apt-get -y update
-           apt-get -y install wget gnupg
+           sudo apt-get -y update
+           sudo apt-get -y install wget gnupg     
            
     - name: 🔽 Add package source for LLVM 12
       run: |     
@@ -43,10 +40,13 @@ jobs:
            echo "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-12 main" >> /etc/apt/sources.list.d/llvm.list
            echo "deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-12 main" >> /etc/apt/sources.list.d/llvm.list
      
+    #- name: 🔽 Install Python
+    #  run: sudo apt-get install python3 python3-pip python3-setuptools python3-wheel
+       
     - name: 🔽 Install build tools
       run: |
-           apt-get -y update 
-           apt-get -y install \
+           sudo apt-get -y update 
+           sudo apt-get -y install \
                  build-essential \
                  meson \
                  ninja-build \
@@ -64,15 +64,6 @@ jobs:
                  libssl-dev \
                  libcurl4-openssl-dev
       
-    - name: 🔽 Install Ninja
-      run: sudo apt-get install ninja-build
-      
-    - name: 🔽 Install Meson
-      run: pip3 install meson
-      
-    - name: 🔽 Install 
-      run: sudo apt install clang-11
-      
     - name: ✏ Build using meson
       run: meson build 
       
@@ -81,5 +72,4 @@ jobs:
       
     - name: ❔ Show important Files and Folders
       run: ls -lahr
-      
-      
+           
