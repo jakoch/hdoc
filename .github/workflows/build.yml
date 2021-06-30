@@ -43,7 +43,7 @@ jobs:
            echo "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-12 main" >> /etc/apt/sources.list.d/llvm.list
            echo "deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-12 main" >> /etc/apt/sources.list.d/llvm.list
      
-   - name: 🔽 Install build tools
+    - name: 🔽 Install build tools
       run: |
            apt-get -y update 
            apt-get -y install \
