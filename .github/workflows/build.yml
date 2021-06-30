@@ -52,7 +52,6 @@ jobs:
                  groff \
                  unzip \
                  pkg-config \
-                 # Dependencies for repos in the CI test
                  git \
                  zlib1g-dev \
                  libssl-dev \
