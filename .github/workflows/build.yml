@@ -34,3 +34,14 @@ jobs:
       
     - name: 🔽 Install Meson
       run: pip3 install meson
+      
+    - name: ✏ Build using meson
+      run: meson build 
+      
+    - name: 🙏 Compile using Ninja
+      run: ninja -C build
+      
+    - name: ❔ Show important Files and Folders
+      run: ls -lahr
+      
+      
