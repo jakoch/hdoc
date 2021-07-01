@@ -94,6 +94,11 @@ jobs:
       
     - uses: actions/upload-artifact@v2
       with:
+        name: hdoc-docs
+        path: hdoc-output
+      
+    - uses: actions/upload-artifact@v2
+      with:
         name: hdoc-build
         path: |
           build/hdoc
