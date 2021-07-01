@@ -88,4 +88,9 @@ jobs:
     
     - name: Run
       run: build/hdoc -v
+      
+    - uses: actions/upload-artifact@v2
+      with:
+        name: hdoc-build
+        path: build
            
