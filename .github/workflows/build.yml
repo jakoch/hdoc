@@ -29,10 +29,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       
-    - name: 🔽 Install wget gnupg
-      run: | 
-           sudo apt-get -y update
-           sudo apt-get -y install wget gnupg     
+    #- name: 🔽 Install wget gnupg
+    #  run: | 
+    #       sudo apt-get -y update
+    #       sudo apt-get -y install wget gnupg     
            
     - name: 🔽 Add package source for LLVM 12
       run: |    
