@@ -83,8 +83,11 @@ jobs:
         ls -lahr build
         ls -lahr build/unit-tests
         
-    #- name: Test
-    #  run: build/unit-tests/
+    - name: Unit Tests
+      run: build/unit-tests
+    
+    - name: Index Tests
+      run: build/index-tests
     
     - name: Run
       run: build/hdoc -v
@@ -92,5 +95,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: hdoc-build
-        path: build
+        path: |
+          build/hdoc
+          build/hdoc-client
            
