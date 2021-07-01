@@ -89,7 +89,7 @@ jobs:
     - name: Index Tests
       run: build/index-tests
     
-    - name: Run
+    - name: Generate Documentation for hdoc using hdoc
       run: build/hdoc -v
       
     - uses: actions/upload-artifact@v2
