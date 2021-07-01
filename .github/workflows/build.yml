@@ -81,4 +81,11 @@ jobs:
       run: |
         ls -lahr
         ls -lahr build
+        ls -lahr build/unit-tests
+        
+    #- name: Test
+    #  run: build/unit-tests/
+    
+    - name: Run
+      run: build/hdoc -v
            
