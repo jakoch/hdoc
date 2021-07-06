@@ -1,0 +1,29 @@
+#
+# .github/workflows/build-on-windows.yml
+#
+# Copyright 2021 Jens A. Koch.
+# SPDX-License-Identifier: BSL-1.0
+# This file is part of hdoc.
+#
+
+name: "Build on Windows"
+
+on: [push, pull_request]
+
+jobs:
+
+build:
+
+    steps:
+    
+      - name: 🤘 Checkout Code
+        uses: actions/checkout@v2 # https://github.com/actions/checkout
+
+      - name: Install LLVM
+        run: |
+          curl -fsSL -o LLVM12.exe https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0/LLVM-12.0.0-win64.exe 
+          7z x LLVM12.exe -y -o"C:/Program Files/LLVM"
+
+      - name: ❔ CHECK important folders, to see if everything is present (before building)
+        run: |
+          dir "C:/Program Files/LLVM"
