@@ -18,51 +18,51 @@ jobs:
 
     steps:
     
-      - name: 🤘 Checkout Code
-        uses: actions/checkout@v2 # https://github.com/actions/checkout
+    - name: 🤘 Checkout Code
+      uses: actions/checkout@v2 # https://github.com/actions/checkout
 
-      - name: Install LLVM
-        run: |
-          curl -fsSL -o LLVM12.exe https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0/LLVM-12.0.0-win64.exe 
-          7z x LLVM12.exe -y -o"C:/Program Files/LLVM"
+    - name: Install LLVM
+      run: |
+        curl -fsSL -o LLVM12.exe https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0/LLVM-12.0.0-win64.exe 
+        7z x LLVM12.exe -y -o"C:/Program Files/LLVM"
           
-      - name: Install Python 3.x
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
+    - name: Install Python 3.x
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
           
-      - name: Install Meson (build tool)
-        run: pip install meson
+    - name: Install Meson (build tool)
+      run: pip install meson
         
-      - name: ✏ Build using meson
-        run: meson build 
+    - name: ✏ Build using meson
+      run: meson build 
       
-      - name: 🙏 Compile using Ninja
-        run: ninja -C build
+    - name: 🙏 Compile using Ninja
+      run: ninja -C build
 
-      - name: ❔ CHECK important folders, to see if everything is present (before building)
-        run: |
-          dir "C:/Program Files/LLVM"  
-          dir build
-          dir build/unit-tests
+    - name: ❔ CHECK important folders, to see if everything is present (before building)
+      run: |
+        dir "C:/Program Files/LLVM"  
+        dir build
+        dir build/unit-tests
         
-      - name: Unit Tests
-        run: build/unit-tests
+    - name: Unit Tests
+      run: build/unit-tests
     
-      - name: Index Tests
-        run: build/index-tests
+    - name: Index Tests
+      run: build/index-tests
     
-      - name: Generate Documentation for hdoc using hdoc
-        run: build/hdoc -v
-      
-      - uses: actions/upload-artifact@v2
-        with:
+    - name: Generate Documentation for hdoc using hdoc
+      run: build/hdoc -v
+     
+    - uses: actions/upload-artifact@v2
+      with:
         name: hdoc-docs
         path: hdoc-output
       
-      - uses: actions/upload-artifact@v2
-        with:
-          name: hdoc-build
-          path: |
-            build/hdoc
-            build/hdoc-client
+    - uses: actions/upload-artifact@v2
+      with:
+        name: hdoc-build
+        path: |
+          build/hdoc
+          build/hdoc-client
