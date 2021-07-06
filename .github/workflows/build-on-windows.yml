@@ -29,9 +29,9 @@ jobs:
     - name: Install LLVM
       run: |
         curl -fsSL -o LLVM12.exe https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0/LLVM-12.0.0-win64.exe 
-        dir
-        START /WAIT D:\a\hdoc\hdoc\LLVM12.exe /S /D="C:/Program Files/LLVM"
-          
+        7z x LLVM12.exe -y -o"C:/Program Files/LLVM"
+        set PATH="C:/Program Files/LLVM";%PATH%
+                  
     - name: Install Python 3.x
       uses: actions/setup-python@v2
       with:
