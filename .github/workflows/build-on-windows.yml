@@ -12,7 +12,9 @@ on: [push, pull_request]
 
 jobs:
 
-build:
+  build:
+    name: "Windows"
+    runs-on: windows-latest
 
     steps:
     
