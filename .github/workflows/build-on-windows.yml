@@ -21,19 +21,23 @@ jobs:
     - name: 🤘 Checkout Code
       uses: actions/checkout@v2 # https://github.com/actions/checkout
 
+    # 7z x LLVM12.exe -y -o"C:/Program Files/LLVM"
     - name: Install LLVM
       run: |
         curl -fsSL -o LLVM12.exe https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0/LLVM-12.0.0-win64.exe 
-        7z x LLVM12.exe -y -o"C:/Program Files/LLVM"
+        LLVM12.exe /S /D="C:/Program Files/LLVM"
           
     - name: Install Python 3.x
       uses: actions/setup-python@v2
       with:
         python-version: '3.x'
-          
-    - name: Install Meson (build tool)
+    
+    - name: Install Ninja
+      uses: seanmiddleditch/gha-setup-ninja@master
+    
+    - name: Install Meson
       run: pip install meson
-        
+              
     - name: ✏ Build using meson
       run: meson build 
       
