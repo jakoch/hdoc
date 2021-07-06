@@ -20,13 +20,17 @@ jobs:
     name: "Windows"
     runs-on: windows-latest
 
+    defaults:
+      run:
+        shell: cmd
+
     steps:
     
     - name: 🤘 Checkout Code
       uses: actions/checkout@v2 # https://github.com/actions/checkout
 
     # 7z x LLVM12.exe -y -o"C:/Program Files/LLVM"
-    - name: Install LLVM
+    - name: Install LLVM      
       run: |
         curl -fsSL -o LLVM12.exe https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0/LLVM-12.0.0-win64.exe 
         7z x LLVM12.exe -y -o"C:/Program Files/LLVM"
